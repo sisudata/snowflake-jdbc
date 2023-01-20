@@ -119,6 +119,10 @@ public class SFStatement extends SFBaseStatement {
 
     // snowflake specific client side commands
     if (isFileTransfer(trimmedSql)) {
+      if (this.session.isFileTransferDisabled()) {
+        throw new SnowflakeSQLException(
+            ErrorCode.INVALID_SQL, "file transfers are disabled for this connection");
+      }
       // PUT/GET command
       logger.debug("Executing file transfer locally: {}", sql);
 
