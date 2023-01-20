@@ -55,6 +55,7 @@ public enum SFSessionProperty {
   INJECT_WAIT_IN_PUT("inject_wait_in_put", false, Integer.class),
   PRIVATE_KEY_FILE("private_key_file", false, String.class),
   PRIVATE_KEY_FILE_PWD("private_key_file_pwd", false, String.class),
+  DISABLE_FILE_TRANSFER("disableFileTransfer", false, Boolean.class),
   CLIENT_INFO("snowflakeClientInfo", false, String.class),
   ALLOW_UNDERSCORES_IN_HOST("allowUnderscoresInHost", false, Boolean.class);
 

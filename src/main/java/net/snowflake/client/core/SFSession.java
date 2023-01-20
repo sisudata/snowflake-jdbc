@@ -99,6 +99,8 @@ public class SFSession extends SFBaseSession {
   private Telemetry telemetryClient;
   private SnowflakeConnectString sfConnStr;
 
+  private boolean disableFileTransfer = false;
+
   // This constructor is used only by tests with no real connection.
   // For real connections, the other constructor is always used.
   @VisibleForTesting
@@ -349,6 +351,11 @@ public class SFSession extends SFBaseSession {
             privateKeyPassword = (String) propertyValue;
           }
           break;
+
+        case DISABLE_FILE_TRANSFER:
+          if (propertyValue != null) {
+            disableFileTransfer = (Boolean) propertyValue;
+          }
 
         default:
           break;
@@ -889,6 +896,10 @@ public class SFSession extends SFBaseSession {
 
   public void setEnableCombineDescribe(boolean enable) {
     this.enableCombineDescribe = enable;
+  }
+
+  public boolean isFileTransferDisabled() {
+    return this.disableFileTransfer;
   }
 
   @Override
